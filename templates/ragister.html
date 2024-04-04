@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('static/images/ragister3.jpg'); 
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    .register-container {
+      display: flex;
+      flex-direction: column;
+      height: 750px;
+      width: 600px;
+      align-items: center;
+      margin: auto;
+      margin-top: 50px;
+      background-color:rgba(0, 0, 0, 0.5);
+      box-shadow: inset -5px -5px rgba(0, 0, 0, 0.5);
+      border-radius: 25px;
+    }
+    #ragister{
+        padding: 10px 20px;
+        margin-top: 20px;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        box-shadow: inset 3px 3px rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="register-container">
+          {% if errmsg %}
+          <div class="alert alert-danger" role="alert">
+            {{errmsg}}
+          </div>
+          {% endif %}  
+
+          <form method="POST">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">Registration</h2>
+
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter username" name="uname">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" >
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter password" name="upass">
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="ucpass">
+            </div>
+            <div class="form-group">
+              <label for="Mobile Number">Mobile Number</label>
+              <input type="number" class="form-control" id="mobile number" placeholder="Enter Mobile Number" name="mono">
+
+            </div>
+            <div class="form-group">
+              <label for="Address">Address: </label>
+              <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address">
+
+            </div>
+            <button type="submit"  class="btn btn-primary" id="ragister">Register</button>&nbsp;&nbsp;
+            
+             Already User?  <a href="/login" class="btn btn-primary" id="ragister">Login</a>
+          </form>
+          {% if success %}
+            <div class="alert alert-success" role="alert">
+              {{success}}
+            </div>
+          {% endif %}  
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

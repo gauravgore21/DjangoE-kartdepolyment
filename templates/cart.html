@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<!--2nd row start or main section start-->
+<div class="row mt-5">
+    <div class="col-md-9">
+        {% for i in data %}
+        {% if forloop.counter == 1 %}
+      <div class="mt-5 p-3 shadow">
+        <p><strong>Customer Name: </strong>{{i.uid.username}}</p>
+        <p><strong>Customer Email: </strong>{{i.uid.email}}</p>
+        <p><strong>Customer Mobile Number: </strong>{{i.uid.mono}}</p>
+        <p><strong>Customer Address: </strong>{{i.uid.address}}</p>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="mt-5 p-3 shadow">
+        {% for i in data %}
+        <div class="row mb-2">
+          <div class="col-md-5">
+            <img src="{{i.pid.pimage.url}}" class="card-img-top" alt="..." height="150px">
+          </div>
+          <div class="col-md-7">
+          <p><strong>Product Name:</strong>{{i.pid.name}}</p>
+          {% if i.pid.cat == 1 %}
+                <p><strong>Category: </strong>Electronics</p>
+                {% elif i.pid.cat == 2 %}
+                <p><strong>Category: </strong>shoes</p>
+                {% else %}
+                <p><strong>Category: </strong>Cloth</p>
+            {% endif %}
+          <p><strong>Detail: </strong>{{i.pid.pdetail}}</p>
+          <p><strong>Price(per item): </strong>{{i.pid.price}}</p>
+          <p>
+            <strong>QTY: </strong>
+            <a href="/updateqty/0/{{i.id}}"><button class="btn btn-danger" ><b>-</b></button></a>
+            <input type="text" value="{{i.qty}}">
+            <a href="/updateqty/1/{{i.id}}"><button class="btn btn-danger"><b>+</b></button></a>
+          </p>
+          <p><a href="/remove/{{i.id}}"><button class="btn btn-danger">Remove</button></a>
+
+          </p>
+        </div>
+        </div><!--cart product 1-->
+        {% endfor %}
+        
+      </div>
+    </div>
+    <div class="col-md-3">
+      <p><strong>Price Detail</strong></p>
+      <p><strong>Price({{n}} items): Rs. {{total}}</strong></p>
+      <p><strong>Total Price: Rs. {{total}}</strong></p>
+      <p><a href="/placeorder"><button class="btn btn-danger">Place order</button></a></p>
+    </div>
+  </div>
+  <!--2nd row end or main section end-->
+  {% endblock 'main' %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:whitesmoke;
+            text-align: center;
+            padding-top: 50px;
+            
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color:azure;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        h1 {
+            color:black;
+            font-family:'Courier New', Courier, monospace
+        }
+        p {
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Successful...!</h1>
+        <p>Thank you for your payment...!</p>
+        <p>Your transaction was successful.</p>
+        <p><a href="/product"><button class="btn btn-danger">Shop More..!</button></a></p>
+        <!-- You can add more details about the transaction here -->
+    </div>
+</body>
+{% endblock 'main' %}
+
